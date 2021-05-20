@@ -6,6 +6,7 @@ import com.star.entity.Comment;
 import com.star.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -38,7 +39,7 @@ public class CommentServiceImpl implements CommentService {
             Long id = comment.getId();
             String parentNickname1 = comment.getNickname();
             List<Comment> childComments = commentDao.findByBlogIdParentIdNotNull(blogId,id);
-//            查询出子评论
+            // 查询出子评论
             combineChildren(blogId, childComments, parentNickname1);
             comment.setReplyComments(tempReplys);
             tempReplys = new ArrayList<>();
@@ -47,22 +48,22 @@ public class CommentServiceImpl implements CommentService {
     }
 
     private void combineChildren(Long blogId, List<Comment> childComments, String parentNickname1) {
-//        判断是否有一级子评论
+        // 判断是否有一级子评论
         if(childComments.size() > 0){
-//                循环找出子评论的id
+            // 循环找出子评论的id
             for(Comment childComment : childComments){
                 String parentNickname = childComment.getNickname();
                 childComment.setParentNickname(parentNickname1);
                 tempReplys.add(childComment);
                 Long childId = childComment.getId();
-//                    查询出子二级评论
+                // 查询出子二级评论
                 recursively(blogId, childId, parentNickname);
             }
         }
     }
 
     private void recursively(Long blogId, Long childId, String parentNickname1) {
-//        根据子一级评论的id找到子二级评论
+        // 根据子一级评论的id找到子二级评论
         List<Comment> replayComments = commentDao.findByBlogIdAndReplayId(blogId,childId);
 
         if(replayComments.size() > 0){
@@ -76,17 +77,19 @@ public class CommentServiceImpl implements CommentService {
         }
     }
 
-//    新增评论
+    // 新增评论
+    @Transactional
     @Override
     public int saveComment(Comment comment) {
         comment.setCreateTime(new Date());
         int comments = commentDao.saveComment(comment);
-//        文章评论计数
+        // 文章评论计数
         blogDao.getCommentCountById(comment.getBlogId());
         return comments;
     }
 
-//    删除评论
+    // 删除评论
+    @Transactional
     @Override
     public void deleteComment(Comment comment,Long id) {
         commentDao.deleteComment(id);

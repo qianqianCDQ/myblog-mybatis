@@ -5,6 +5,7 @@ import com.star.entity.FriendLink;
 import com.star.service.FriendLinkService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -26,6 +27,7 @@ public class FriendLinkServiceImpl implements FriendLinkService {
         return friendLinkDao.listFriendLink();
     }
 
+    @Transactional
     @Override
     public int saveFriendLink(FriendLink friendLink) {
         return friendLinkDao.saveFriendLink(friendLink);
@@ -41,11 +43,13 @@ public class FriendLinkServiceImpl implements FriendLinkService {
         return friendLinkDao.getFriendLinkByBlogaddress(blogaddress);
     }
 
+    @Transactional
     @Override
     public int updateFriendLink(FriendLink friendLink) {
         return friendLinkDao.updateFriendLink(friendLink);
     }
 
+    @Transactional
     @Override
     public void deleteFriendLink(Long id) {
         friendLinkDao.deleteFriendLink(id);

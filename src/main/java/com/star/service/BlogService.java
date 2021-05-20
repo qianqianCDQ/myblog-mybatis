@@ -30,13 +30,13 @@ public interface BlogService {
 
     List<RecommendBlog> getRecommendedBlog();
 
-//    List<FirstPageBlog> getNewBlog();
+    // List<FirstPageBlog> getNewBlog();
 
     List<FirstPageBlog> getSearchBlog(String query);
 
     DetailedBlog getDetailedBlog(Long id);
 
-    //根据TypeId获取博客列表，在分类页进行的操作
+    // 根据TypeId获取博客列表，在分类页进行的操作
     List<FirstPageBlog> getByTypeId(Long typeId);
 
     Integer getBlogTotal();

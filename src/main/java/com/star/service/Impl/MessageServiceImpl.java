@@ -5,6 +5,7 @@ import com.star.entity.Message;
 import com.star.service.MessageService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -97,13 +98,15 @@ public class MessageServiceImpl implements MessageService {
     }
 
     @Override
-    //存储留言信息
+    @Transactional
+    // 保存留言
     public int saveMessage(Message message) {
         message.setCreateTime(new Date());
         return messageDao.saveMessage(message);
     }
 
-//    删除留言
+    // 删除留言
+    @Transactional
     @Override
     public void deleteMessage(Long id) {
         messageDao.deleteMessage(id);

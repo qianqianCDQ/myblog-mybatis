@@ -15,5 +15,5 @@ import org.springframework.stereotype.Repository;
 @Mapper
 @Repository
 public interface UserDao {
-    User findByUsernameAndPassword(@Param("username") String username,@Param("password") String password);
+    User findByUsernameAndPassword(@Param("username") String username, @Param("password") String password);
 }

@@ -24,21 +24,17 @@ public class TypeServiceImpl implements TypeService {
     @Autowired
     private TypeDao typeDao;
 
-
-
     @Transactional
     @Override
     public int saveType(Type type) {
         return typeDao.saveType(type);
     }
 
-    @Transactional
     @Override
     public Type getType(Long id) {
         return typeDao.getType(id);
     }
 
-    @Transactional
     @Override
     public List<Type> getAllType() {
         return typeDao.getAllType();
@@ -65,7 +61,5 @@ public class TypeServiceImpl implements TypeService {
     public void deleteType(Long id) {
         typeDao.deleteType(id);
     }
-
-
 
 }

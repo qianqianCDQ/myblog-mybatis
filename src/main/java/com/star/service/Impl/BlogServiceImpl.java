@@ -36,6 +36,7 @@ public class BlogServiceImpl implements BlogService {
         return blogDao.getAllBlogQuery();
     }
 
+    @Transactional
     @Override
     public int saveBlog(Blog blog) {
         blog.setCreateTime(new Date());
@@ -45,12 +46,14 @@ public class BlogServiceImpl implements BlogService {
         return blogDao.saveBlog(blog);
     }
 
+    @Transactional
     @Override
     public int updateBlog(ShowBlog showBlog) {
         showBlog.setUpdateTime(new Date());
         return blogDao.updateBlog(showBlog);
     }
 
+    @Transactional
     @Override
     public void deleteBlog(Long id) {
         blogDao.deleteBlog(id);
@@ -72,11 +75,6 @@ public class BlogServiceImpl implements BlogService {
         return allRecommendBlog;
     }
 
-//    @Override
-//    public List<FirstPageBlog> getNewBlog() {
-//        return blogDao.getNewBlog();
-//    }
-
     @Override
     public List<FirstPageBlog> getSearchBlog(String query) {
         return blogDao.getSearchBlog(query);
@@ -97,7 +95,6 @@ public class BlogServiceImpl implements BlogService {
         blogDao.getCommentCountById(id);
         return detailedBlog;
     }
-
 
     @Override
     public List<FirstPageBlog> getByTypeId(Long typeId) {

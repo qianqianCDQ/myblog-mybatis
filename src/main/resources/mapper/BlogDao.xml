@@ -150,7 +150,6 @@
         order by b.update_time desc
     </select>
 
-
     <resultMap id="detailedBlog" type="com.star.queryvo.DetailedBlog">
         <id property="id" column="bid"/>
         <result property="firstPicture" column="first_picture"/>
@@ -200,13 +199,17 @@
     <select id="getBlogTotal" resultType="Integer">
         select count(*) from t_blog
     </select>
+
     <select id="getBlogViewTotal" resultType="Integer">
         select sum(views) from t_blog
     </select>
+
     <select id="getBlogCommentTotal" resultType="Integer">
         select count(*) from t_comment
     </select>
+
     <select id="getBlogMessageTotal" resultType="Integer">
         select count(*) from t_message
     </select>
+
 </mapper>
