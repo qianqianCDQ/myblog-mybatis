@@ -22,10 +22,10 @@ public interface PictureService {
     //根据id查询照片
     Picture getPicture(Long id);
 
-//    编辑修改相册
+    // 编辑修改相册
     int updatePicture(Picture picture);
 
-//    删除照片
+    // 删除照片
     void deletePicture(Long id);
 
 }

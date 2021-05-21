@@ -29,26 +29,26 @@ public class TypeController {
     @Autowired
     private TypeService typeService;
 
-//    分页查询分类列表
+    // 分页查询分类列表
     @GetMapping("/types")
-    public String list(Model model,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
-        //按照排序字段 倒序 排序
+    public String list(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
+        // 按照排序字段 降序 排序
         String orderBy = "id desc";
-        PageHelper.startPage(pageNum,10,orderBy);
+        PageHelper.startPage(pageNum,10, orderBy);
         List<Type> list = typeService.getAllType();
-        PageInfo<Type> pageInfo = new PageInfo<Type>(list);
-        model.addAttribute("pageInfo",pageInfo);
+        PageInfo<Type> pageInfo = new PageInfo<>(list);
+        model.addAttribute("pageInfo", pageInfo);
         return "admin/types";
     }
 
-//    返回新增分类页面
+    // 跳转到新增分类页面
     @GetMapping("/types/input")
     public String input(Model model){
         model.addAttribute("type", new Type());
         return "admin/types-input";
     }
 
-//  新增分类
+    // 提交新增的分类
     @PostMapping("/types")
     public String post(@Valid Type type, RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
@@ -65,19 +65,22 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
-//    跳转修改分类页面
+    // 对分类进行修改
     @GetMapping("/types/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("type", typeService.getType(id));
         return "admin/types-input";
     }
 
-//    编辑修改分类
+    // 提交编辑后的分类
     @PostMapping("/types/{id}")
-    public String editPost(@Valid Type type, RedirectAttributes attributes) {
+    public String editPost(@Valid Type type, BindingResult result, @PathVariable Long id, RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
         if (type1 != null) {
             attributes.addFlashAttribute("message", "不能添加重复的分类");
+            return "redirect:/admin/types/input";
+        }
+        if (result.hasErrors()) {
             return "redirect:/admin/types/input";
         }
         int t = typeService.updateType(type);
@@ -89,7 +92,7 @@ public class TypeController {
         return "redirect:/admin/types";
     }
 
-//    删除分类
+    // 删除分类
     @GetMapping("/types/{id}/delete")
     public String delete(@PathVariable Long id,RedirectAttributes attributes) {
         typeService.deleteType(id);

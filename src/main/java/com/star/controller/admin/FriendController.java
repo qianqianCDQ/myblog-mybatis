@@ -31,7 +31,7 @@ public class FriendController {
 
     // 查询所有友链
     @GetMapping("/friendlinks")
-    public String friend(Model model,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
+    public String friend(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
         PageHelper.startPage(pageNum,10);
         List<FriendLink> listFriendLink = friendLinkService.listFriendLink();
         PageInfo<FriendLink> pageInfo = new PageInfo<FriendLink>(listFriendLink);

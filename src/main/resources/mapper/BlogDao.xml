@@ -34,7 +34,7 @@
     </insert>
 
     <!--查询所有文章-->
-    <select id="getAllBlog" resultType="com.star.entity.Blog">
+    <select id="getAllBlog" resultMap="blog">
         select * from t_blog
     </select>
 

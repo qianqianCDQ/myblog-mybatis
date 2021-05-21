@@ -28,7 +28,7 @@ public class PictureController {
     @Autowired
     private PictureService pictureService;
 
-//    查询照片列表
+    // 查询照片列表
     @GetMapping("/pictures")
     public String pictures(Model model,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum) {
         PageHelper.startPage(pageNum,10);
@@ -38,23 +38,21 @@ public class PictureController {
         return "admin/pictures";
     }
 
-//    跳转新增页面
+    // 跳转到照片新增页面
     @GetMapping("/pictures/input")
     public String input(Model model) {
         model.addAttribute("picture", new Picture());
         return "admin/pictures-input";
     }
 
-//    照片新增
+    // 保存新增后的照片
     @PostMapping("/pictures")
     public String post(@Valid Picture picture, BindingResult result, RedirectAttributes attributes){
-
         if(result.hasErrors()){
             return "admin/pictures-input";
         }
-
         int P = pictureService.savePicture(picture);
-        if (P == 0 ) {
+        if (P == 0) {
             attributes.addFlashAttribute("message", "新增失败");
         } else {
             attributes.addFlashAttribute("message", "新增成功");
@@ -62,17 +60,16 @@ public class PictureController {
         return "redirect:/admin/pictures";
     }
 
-//    跳转照片编辑页面
+    //  跳转照片编辑页面
     @GetMapping("/pictures/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         model.addAttribute("picture", pictureService.getPicture(id));
         return "admin/pictures-input";
     }
 
-//    编辑相册
+    // 保存编辑后的相册
     @PostMapping("/pictures/{id}")
     public String editPost(@Valid Picture picture, RedirectAttributes attributes) {
-
         int P = pictureService.updatePicture(picture);
         if (P == 0 ) {
             attributes.addFlashAttribute("message", "编辑失败");
@@ -82,7 +79,7 @@ public class PictureController {
         return "redirect:/admin/pictures";
     }
 
-//    删除照片
+    // 删除照片
     @GetMapping("/pictures/{id}/delete")
     public String delete(@PathVariable Long id, RedirectAttributes attributes){
         pictureService.deletePicture(id);

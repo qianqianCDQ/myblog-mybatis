@@ -17,6 +17,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpSession;
+import javax.swing.plaf.synth.SynthOptionPaneUI;
 import javax.validation.Valid;
 import java.util.List;
 
@@ -33,31 +34,32 @@ public class BlogController {
 
     @Autowired
     private BlogService blogService;
+
     @Autowired
     private TypeService typeService;
 
     // 博客列表
     @RequestMapping("/blogs")
     public String blogs(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
-        //按照排序字段 倒序 排序
+        // 按照更新时间 倒序 排列
         String orderBy = "update_time desc";
-        PageHelper.startPage(pageNum,10,orderBy);
+        PageHelper.startPage(pageNum,10, orderBy);
         List<BlogQuery> list = blogService.getAllBlog();
-        PageInfo<BlogQuery> pageInfo = new PageInfo<BlogQuery>(list);
-        model.addAttribute("types",typeService.getAllType());
-        model.addAttribute("pageInfo",pageInfo);
+        PageInfo<BlogQuery> pageInfo = new PageInfo<>(list);
+        model.addAttribute("types", typeService.getAllType());
+        model.addAttribute("pageInfo", pageInfo);
         return "admin/blogs";
     }
 
-    //跳转博客新增页面
+    // 跳转博客新增页面
     @GetMapping("/blogs/input")
     public String input(Model model) {
-        model.addAttribute("types",typeService.getAllType());
+        model.addAttribute("types", typeService.getAllType());
         model.addAttribute("blog", new Blog());
         return "admin/blogs-input";
     }
 
-    // 博客新增
+    // 提交新增的博客
     @PostMapping("/blogs")
     public String post(Blog blog, RedirectAttributes attributes, HttpSession session){
         blog.setUser((User) session.getAttribute("user"));
@@ -85,7 +87,7 @@ public class BlogController {
         return "redirect:/admin/blogs";
     }
 
-    // 跳转编辑修改文章
+    // 跳转到文章编辑页面
     @GetMapping("/blogs/{id}/input")
     public String editInput(@PathVariable Long id, Model model) {
         ShowBlog blogById = blogService.getBlogById(id);
@@ -95,7 +97,7 @@ public class BlogController {
         return "admin/blogs-input";
     }
 
-    // 编辑修改文章
+    // 提交编辑后的文章
     @PostMapping("/blogs/{id}")
     public String editPost(@Valid ShowBlog showBlog, RedirectAttributes attributes) {
         int b = blogService.updateBlog(showBlog);

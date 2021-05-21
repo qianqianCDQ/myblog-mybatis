@@ -19,9 +19,9 @@ public interface TypeService {
 
     Type getType(Long id);
 
-    List<Type>getAllType();
+    List<Type> getAllType();
 
-    List<Type>getAllTypeAndBlog();
+    List<Type> getAllTypeAndBlog();
 
     Type getTypeByName(String name);
 
