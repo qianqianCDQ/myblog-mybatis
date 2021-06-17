@@ -30,7 +30,7 @@ public class PictureController {
 
     // 查询照片列表
     @GetMapping("/pictures")
-    public String pictures(Model model,@RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum) {
+    public String pictures(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum) {
         PageHelper.startPage(pageNum,10);
         List<Picture> listFriendLink = pictureService.listPicture();
         PageInfo<Picture> pageInfo = new PageInfo<Picture>(listFriendLink);

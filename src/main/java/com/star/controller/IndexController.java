@@ -20,7 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-
 /**
  * @Description: 首页控制器
  * @Author: ONESTAR
@@ -45,7 +44,9 @@ public class IndexController {
 
     // 分页查询博客列表
     @GetMapping("/")
-    public String index(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum, RedirectAttributes attributes){
+    public String index(Model model,
+                        @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
+                        RedirectAttributes attributes){
         PageHelper.startPage(pageNum,10);
         List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
         List<RecommendBlog> recommendedBlog = blogService.getRecommendedBlog();
@@ -80,13 +81,13 @@ public class IndexController {
         return "blog";
     }
 
-//    最新博客列表
-//    @GetMapping("/footer/newblog")
-//    public String newblogs(Model model) {
-//        List<FirstPageBlog> newBlog = blogService.getNewBlog();
-//        model.addAttribute("newblogs", newBlog);
-//        return "index :: newblogList";
-//    }
+    // 最新博客列表
+    // @GetMapping("/footer/newblog")
+    // public String newblogs(Model model) {
+    // List<FirstPageBlog> newBlog = blogService.getNewBlog();
+    // model.addAttribute("newblogs", newBlog);
+    // return "index :: newblogList";
+    // }
 
     // 博客信息
     @GetMapping("/footer/blogmessage")

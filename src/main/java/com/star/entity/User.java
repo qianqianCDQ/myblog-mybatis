@@ -1,5 +1,6 @@
 package com.star.entity;
 
+import javax.validation.constraints.Email;
 import java.util.Date;
 
 /**
@@ -56,6 +57,7 @@ public class User {
         this.password = password;
     }
 
+    @Email(message = "邮箱的格式不正确")
     public String getEmail() {
         return email;
     }

@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>ONESTAR-时间轴</title>
-  <link href="../static/images/favicon.ico" th:href="@{/images/me.jpg}" rel="icon" type="image/x-ico">
+  <title>QIAN-时间轴</title>
+  <link href="../static/images/favicon.ico" th:href="@{/images/me_.jpg}" rel="icon" type="image/x-ico">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.css">
   <link rel="stylesheet" href="../static/css/me.css" th:href="@{/css/me.css}">
   <link rel="stylesheet" href="../static/css/timeline.css" th:href="@{/css/timeline.css}">
@@ -15,14 +15,13 @@
   <nav class="gird-header">
     <div class="ui container">
       <div class="ui inverted secondary stackable menu">
-        <h2 class="ui olive header item" style="font-family: STSong">ONESTAR</h2>
+        <h2 class="ui olive header item" style="font-family: STSong">QIAN</h2>
         <!--<div class="right m-item item m-mobile-hide">-->
           <a href="#" th:href="@{/}" class="m-item item m-mobile-hide "><i class="home icon"></i>首页</a>
           <a href="#" th:href="@{/types/-1}" class="m-item item m-mobile-hide"><i class="clone outline icon"></i>分类</a>
           <a href="#" th:href="@{/archives}" class="active m-item item m-mobile-hide"><i class="clock icon"></i>时间轴</a>
           <a href="#" th:href="@{/music}" class="m-item item m-mobile-hide"><i class="music icon"></i>音乐盒</a>
           <a href="#" th:href="@{/message}" class="m-item item m-mobile-hide"><i class="book icon"></i>留言板</a>
-          <a href="#" th:href="@{/friends}" class="m-item item m-mobile-hide"><i class="pencil alternate icon"></i>友人帐</a>
           <a href="#" th:href="@{/picture}" class="m-item item m-mobile-hide"><i class="image icon"></i>照片墙</a>
           <a href="#" th:href="@{/about}" class="m-item item m-mobile-hide"><i class="info icon"></i>关于我</a>
         <!--</div>-->
@@ -81,8 +80,8 @@
           <!--</div>-->
           <!--</div>-->
           <div class="ui inverted link list">
-            <div href="#" class="m-text-thin">Email：onestarlr@hotmail.com</div>
-            <div href="#" class="m-text-thin">QQ：316392836</div>
+            <div href="#" class="m-text-thin">Email：15804062668@163.com</div>
+            <div href="#" class="m-text-thin">QQ：1906711512</div>
           </div>
         </div>
 
@@ -90,8 +89,8 @@
           <div class="ui inverted link list">
             <div class="item">
               <!--微信二维码-->
-              <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >关注公众号</div>
-              <img src="../static/images/oneStar.jpg" th:src="@{/images/oneStar.jpg}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
+              <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >关注微信</div>
+              <img src="../static/images/oneStar_.jpg" th:src="@{/images/oneStar_.jpg}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
             </div>
           </div>
         </div>
@@ -100,14 +99,14 @@
           <div class="ui inverted link list">
             <div class="item">
               <!--微信二维码-->
-              <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >问题交流（QQ群）</div>
-              <img src="../static/images/QQ-question.jpg" th:src="@{/images/QQ-question.jpg}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
+              <div style="font-size: large;font-weight: bold" class="ui inverted m-text-thin m-text-spaced " >关注qq</div>
+              <img src="../static/images/qq_.jpg" th:src="@{/images/qq_.jpg}"  class="ui m-margin-top rounded image" alt="" style="width: 110px">
             </div>
           </div>
         </div>
         <!--博客运行时间统计-->
         <div class="four wide column">
-          <div style="font-size: large;font-weight: bold" class="ui inverted  m-text-thin m-text-spaced m-margin-top">客栈信息</div>
+          <div style="font-size: large;font-weight: bold" class="ui inverted  m-text-thin m-text-spaced m-margin-top">博客信息</div>
           <!--<p id="htmer_time" class="item m-text-thin"></p>-->
           <div id="blog-message">
             <div class="ui inverted link list" style="align-content: center;margin-top: 10px" th:fragment="blogMessage">
@@ -128,8 +127,8 @@
         </div>
       </div>
       <div class="ui inverted section divider"></div>
-      <div style="color: #F08047;margin-top: -18px" class="ui inverted m-text-thin m-text-spaced">我的客栈已营业：<span id="htmer_time" class="item m-text-thin"></span> (*๓´╰╯`๓)</div>
-      <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">赣ICP备20004408号-1</a>
+      <div style="color: #F08047;margin-top: -18px" class="ui inverted m-text-thin m-text-spaced">博客已营业：<span id="htmer_time" class="item m-text-thin"></span> (*๓´╰╯`๓)</div>
+      <a rel="nofollow" href="http://www.beian.miit.gov.cn" target="_blank">浙ICP备2021013160号</a>
     </div>
     </div>
 
@@ -140,8 +139,6 @@
   <script src="https://cdn.jsdelivr.net/semantic-ui/2.2.4/semantic.min.js"></script>
   <script src="../static/lib/timeline/timeline.js" th:src="@{/lib/timeline/timeline.js}"></script>
   <script src="../static/lib/waypoints/jquery.waypoints.min.js" th:src="@{/lib/waypoints/jquery.waypoints.min.js}"></script>
-
-
 
   <script>
 
