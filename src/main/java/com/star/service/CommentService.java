@@ -4,13 +4,7 @@ import com.star.entity.Comment;
 
 import java.util.List;
 
-/**
- * @Description: 博客评论业务层接口
- * @Author: ONESTAR
- * @Date: Created in 13:26 2020/4/5
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 public interface CommentService {
 
     List<Comment> listCommentByBlogId(Long blogId);

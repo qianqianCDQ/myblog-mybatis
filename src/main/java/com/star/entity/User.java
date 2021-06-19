@@ -3,13 +3,7 @@ package com.star.entity;
 import javax.validation.constraints.Email;
 import java.util.Date;
 
-/**
- * @Description: 用户实体类
- * @Author: ONESTAR
- * @Date: Created in 9:18 2020/3/26
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 public class User {
 
     private Long id;

@@ -33,7 +33,7 @@
     </select>
 
     <!--删除留言-->
-    <delete id="deleteMessage" >
+    <delete id="deleteMessage">
         delete from t_message where id = #{id}
     </delete>
 

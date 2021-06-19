@@ -15,7 +15,7 @@
         order by c.create_time desc
     </select>
 
-<!--查询一级子评论-->
+    <!--查询一级子评论-->
     <select id="findByBlogIdParentIdNotNull" resultType="com.star.entity.Comment">
         select *
         from t_comment c

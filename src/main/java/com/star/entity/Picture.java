@@ -1,12 +1,6 @@
 package com.star.entity;
 
-/**
- * @Description: 照片墙实体类
- * @Author: ONESTAR
- * @Date: Created in 9:27 2020/3/26
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 public class Picture {
 
     private Long id;

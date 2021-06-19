@@ -18,13 +18,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * @Description: 评论控制器
- * @Author: ONESTAR
- * @Date: Created in 17:16 2020/4/5
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 @Controller
 public class CommentController {
 
@@ -47,7 +41,7 @@ public class CommentController {
 
     // 新增评论
     @PostMapping("/comments")
-    public String post(Comment comment, HttpSession session,Model model) {
+    public String post(Comment comment, HttpSession session, Model model) {
         Long blogId = comment.getBlogId();
         User user = (User) session.getAttribute("user");
         if (user != null) {
@@ -69,8 +63,8 @@ public class CommentController {
 
     // 删除评论
     @GetMapping("/comment/{blogId}/{id}/delete")
-    public String delete(@PathVariable Long blogId, @PathVariable Long id,Comment comment, RedirectAttributes attributes, Model model){
-        commentService.deleteComment(comment,id);
+    public String delete(@PathVariable Long blogId, @PathVariable Long id, Comment comment, RedirectAttributes attributes, Model model){
+        commentService.deleteComment(comment, id);
         DetailedBlog detailedBlog = blogService.getDetailedBlog(blogId);
         List<Comment> comments = commentService.listCommentByBlogId(blogId);
         model.addAttribute("blog", detailedBlog);

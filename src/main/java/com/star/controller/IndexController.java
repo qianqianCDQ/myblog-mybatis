@@ -20,13 +20,6 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
-/**
- * @Description: 首页控制器
- * @Author: ONESTAR
- * @Date: Created in 13:59 2020/3/25
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
 @Controller
 public class IndexController {
 
@@ -47,14 +40,13 @@ public class IndexController {
     public String index(Model model,
                         @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
                         RedirectAttributes attributes){
-        PageHelper.startPage(pageNum,10);
+        PageHelper.startPage(pageNum, 10);
+
         List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
         List<RecommendBlog> recommendedBlog = blogService.getRecommendedBlog();
-
         PageInfo<FirstPageBlog> pageInfo = new PageInfo<>(allFirstPageBlog);
-        model.addAttribute("pageInfo",pageInfo);
+        model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("recommendedBlogs", recommendedBlog);
-
         return "index";
     }
 
@@ -63,7 +55,7 @@ public class IndexController {
     public String search(Model model,
                          @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
                          @RequestParam String query) {
-        PageHelper.startPage(pageNum, 1000);
+        PageHelper.startPage(pageNum, 10);
         List<FirstPageBlog> searchBlog = blogService.getSearchBlog(query);
         PageInfo<FirstPageBlog> pageInfo = new PageInfo<>(searchBlog);
         model.addAttribute("pageInfo", pageInfo);

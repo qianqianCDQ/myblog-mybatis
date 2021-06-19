@@ -6,13 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * @Description: 照片墙持久层接口
- * @Date: Created in 23:32 2020/4/16
- * @Author: ONESTAR
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 @Mapper
 @Repository
 public interface PictureDao {

@@ -16,13 +16,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * @Description: 留言页面控制器
- * @Date: Created in 10:57 2020/4/16
- * @Author: ONESTAR
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 @Controller
 public class MessageController {
 

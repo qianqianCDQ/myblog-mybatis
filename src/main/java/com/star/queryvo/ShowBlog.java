@@ -1,5 +1,8 @@
 package com.star.queryvo;
 
+import org.hibernate.validator.constraints.Range;
+
+import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 /**
@@ -7,6 +10,7 @@ import java.util.Date;
  */
 public class ShowBlog {
 
+    @NotEmpty(message = "请输入ID")
     private Long id;
     private String flag;
     private String title;

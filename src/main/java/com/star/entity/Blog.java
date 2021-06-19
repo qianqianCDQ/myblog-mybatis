@@ -5,13 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @Description: 博客实体类
- * @Author: ONESTAR
- * @Date: Created in 22:58 2020/3/25
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 public class Blog {
 
     private Long id;

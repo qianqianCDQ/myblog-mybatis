@@ -23,10 +23,6 @@ import java.util.List;
 
 /**
  * @Description: 博客管理控制器
- * @Author: ONESTAR
- * @Date: Created in 12:08 2020/3/27
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Controller
 @RequestMapping("/admin")
@@ -40,7 +36,7 @@ public class BlogController {
 
     // 博客列表
     @RequestMapping("/blogs")
-    public String blogs(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
+    public String blogs(Model model, @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum){
         // 按照更新时间 倒序 排列
         String orderBy = "update_time desc";
         PageHelper.startPage(pageNum,10, orderBy);
@@ -73,7 +69,7 @@ public class BlogController {
 
         if(b == 0){
             attributes.addFlashAttribute("message", "新增失败");
-        }else {
+        } else {
             attributes.addFlashAttribute("message", "新增成功");
         }
         return "redirect:/admin/blogs";
@@ -103,7 +99,7 @@ public class BlogController {
         int b = blogService.updateBlog(showBlog);
         if(b ==0){
             attributes.addFlashAttribute("message", "修改失败");
-        }else {
+        } else {
             attributes.addFlashAttribute("message", "修改成功");
         }
         return "redirect:/admin/blogs";

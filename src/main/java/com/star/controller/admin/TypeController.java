@@ -17,10 +17,6 @@ import java.util.List;
 
 /**
  * @Description: 分类管理控制器
- * @Author: ONESTAR
- * @Date: Created in 17:00 2020/3/27
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Controller
 @RequestMapping("/admin")
@@ -31,7 +27,8 @@ public class TypeController {
 
     // 分页查询分类列表
     @GetMapping("/types")
-    public String list(Model model, @RequestParam(defaultValue = "1",value = "pageNum") Integer pageNum){
+    public String list(Model model,
+                       @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum){
         // 按照排序字段 降序 排序
         String orderBy = "id desc";
         PageHelper.startPage(pageNum,10, orderBy);
@@ -74,7 +71,10 @@ public class TypeController {
 
     // 提交编辑后的分类
     @PostMapping("/types/{id}")
-    public String editPost(@Valid Type type, BindingResult result, @PathVariable Long id, RedirectAttributes attributes) {
+    public String editPost(@Valid Type type,
+                           BindingResult result,
+                           @PathVariable Long id,
+                           RedirectAttributes attributes) {
         Type type1 = typeService.getTypeByName(type.getName());
         if (type1 != null) {
             attributes.addFlashAttribute("message", "不能添加重复的分类");
@@ -94,7 +94,7 @@ public class TypeController {
 
     // 删除分类
     @GetMapping("/types/{id}/delete")
-    public String delete(@PathVariable Long id,RedirectAttributes attributes) {
+    public String delete(@PathVariable Long id, RedirectAttributes attributes) {
         typeService.deleteType(id);
         attributes.addFlashAttribute("message", "删除成功");
         return "redirect:/admin/types";

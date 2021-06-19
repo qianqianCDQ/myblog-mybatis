@@ -2,10 +2,6 @@ package com.star.queryvo;
 
 /**
  * @Description: 推荐博客数据实体类
- * @Author: ONESTAR
- * @Date: Created in 10:45 2020/4/3
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 public class RecommendBlog {
 

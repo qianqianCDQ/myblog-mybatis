@@ -7,13 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * @Description: 评论实体类
- * @Author: ONESTAR
- * @Date: Created in 9:09 2020/3/26
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
- */
+
 public class Comment {
 
     private Long id;

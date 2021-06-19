@@ -82,10 +82,9 @@
         commentabled = #{commentabled} ,update_time = #{updateTime} where id = #{id};
     </update>
 
-
     <select id="searchByTitleOrTypeOrRecommend" parameterType="com.star.queryvo.SearchBlog" resultMap="blog">
         <bind name="pattern" value="'%' + title + '%'" />
-        select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from t_blog b ,t_type t
+        select b.id,b.title,b.update_time,b.recommend,b.type_id,t.id,t.name from t_blog b, t_type t
         <where>
             <if test="1 == 1">
                 b.type_id = t.id
