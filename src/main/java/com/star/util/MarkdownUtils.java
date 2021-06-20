@@ -1,5 +1,6 @@
 package com.star.util;
 
+import org.apache.ibatis.annotations.Param;
 import org.commonmark.Extension;
 import org.commonmark.ext.gfm.tables.TableBlock;
 import org.commonmark.ext.gfm.tables.TablesExtension;
@@ -16,10 +17,6 @@ import java.util.*;
 
 /**
  * @Description: Markdown编辑器
- * @Author: ONESTAR
- * @Date: Created in 13:24 2020/4/5
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 public class MarkdownUtils {
 

@@ -25,7 +25,7 @@
 
     <!--新增保存文章-->
     <insert id="saveBlog" parameterType="com.star.entity.Blog">
-        insert into t_blog (id,title, content, first_picture, flag,
+            insert into t_blog (id,title, content, first_picture, flag,
         views, comment_count, appreciation, share_statement, commentabled, published,
         recommend, create_time, update_time, type_id, user_id, description)
         values (#{id},#{title},#{content},#{firstPicture},#{flag},#{views},#{commentCount},#{appreciation},
@@ -48,7 +48,6 @@
     <delete id="deleteBlog">
         delete from t_blog where id = #{id}
     </delete>
-
 
     <resultMap id="showblog" type="com.star.queryvo.ShowBlog">
         <id property="id" column="id"/>
@@ -167,7 +166,7 @@
     </resultMap>
 
     <!--博客详情查询-->
-    <select id="getDetailedBlog" resultMap="detailedBlog">
+    <select id="getDetailedBlog" parameterType="Integer" resultMap="detailedBlog">
         select b.id bid,b.first_picture,b.flag,b.title,b.content,b.views,b.comment_count,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,t.name
         from t_blog b,t_user u, t_type t
         where b.user_id = u.id and b.type_id = t.id and b.id = #{id}
