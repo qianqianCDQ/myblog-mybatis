@@ -13,10 +13,6 @@ import java.util.List;
 
 /**
  * @Description: 留言业务层接口实现类
- * @Date: Created in 11:45 2020/4/16
- * @Author: ONESTAR
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Service
 public class MessageServiceImpl implements MessageService {
@@ -29,10 +25,6 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * @Description: 查询留言
-     * @Auther: ONESTAR
-     * @Date: 17:26 2020/4/14
-     * @Param:
-     * @Return: 留言消息
      */
     @Override
     public List<Message> listMessage() {
@@ -52,11 +44,6 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * @Description: 查询出子留言
-     * @Auther: ONESTAR
-     * @Date: 17:31 2020/4/14
-     * @Param: childMessages：所有子留言
-     * @Param: parentNickname1：父留言的姓名
-     * @Return:
      */
     private void combineChildren(List<Message> childMessages, String parentNickname1) {
         //判断是否有一级子回复
@@ -75,16 +62,10 @@ public class MessageServiceImpl implements MessageService {
 
     /**
      * @Description: 循环迭代找出子集回复
-     * @Auther: ONESTAR
-     * @Date: 17:33 2020/4/14
-     * @Param: childId：子留言的id
-     * @Param: parentNickname1：子留言的姓名
-     * @Return:
      */
     private void recursively(Long childId, String parentNickname1) {
         //根据子一级留言的id找到子二级留言
         List<Message> replayMessages = messageDao.findByReplayId(childId);
-
         if(replayMessages.size() > 0){
             for(Message replayMessage : replayMessages){
                 String parentNickname = replayMessage.getNickname();

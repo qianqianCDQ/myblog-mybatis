@@ -35,7 +35,6 @@ public class Blog {
     public Blog() {
     }
 
-    @NotEmpty(message = "id不能为空")
     public Long getId() {
         return id;
     }

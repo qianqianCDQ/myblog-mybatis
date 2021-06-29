@@ -53,7 +53,8 @@
 <!--中间内容-->
 <div id="waypoint" class="m-margin- animated fadeIn">
   <div class="ui container m-opacity box-shadow-max">
-      <!--                新增留言-->
+
+      <!-- 新增留言 -->
       <div id="message-form" class="ui form">
           <input type="hidden" name="parentMessage.id" value="-1">
           <!--                    留言区-->
@@ -88,6 +89,7 @@
               </div>
           </div>
       </div>
+
       <!--留言区-->
       <div class="ui bottom attached m-margin-top">
           <div id="message-container" class="ui teal segment">
@@ -151,17 +153,14 @@
   </div>
 </div>
 
-
 <br>
 <br>
 <br>
-
 
 <!--置顶图标-->
 <div id="toolbar" class="m-padded-tb-large m-fixed m-right-bottom">
     <a href="#" class="ui teal icon button"><i class="chevron up icon"></i> </a>
 </div>
-
 
 
 <!--底部栏-->
@@ -281,8 +280,6 @@
     setInterval(setTime, 1000);
 
 
-
-
     $('.menu.toggle').click(function () {
         $('.m-item').toggleClass('m-mobile-hide');
     });
@@ -292,7 +289,6 @@
         position: 'bottom center'
     });
     $('.qq').popup();
-
 
     //评论表单验证
     $('.ui.form').form({
@@ -352,15 +348,19 @@
         });
     }
 
-    // 清除表单
-    function clearContent() {
-        $("[name='nickname']").val('');
-        $("[name='email']").val('');
-        $("[name='content']").val('');
-        $("[name='parentMessage.id']").val(-1);
-        $("[name='content']").attr("placeholder", "请输入评论信息...");
+    function postDat() {
+        $("#message-container").load(/*[[@{/messages}]]*/"",{
+            "parentMessage.id": $("[name='parentMessage.id']").val(),
+
+        })
     }
 
+    function clearConten() {
+        $("[name='nickname']").val('');
+        $("[name='email']").val('');
+        $("[name='content']").attr("placeholder", "请输入评论信息...");
+
+    }
     function reply(obj) {
         var messageId = $(obj).data('messageid');
         var messageNickname = $(obj).data('messagenickname');

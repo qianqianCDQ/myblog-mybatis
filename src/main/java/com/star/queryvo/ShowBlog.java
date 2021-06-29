@@ -10,7 +10,6 @@ import java.util.Date;
  */
 public class ShowBlog {
 
-    @NotEmpty(message = "请输入ID")
     private Long id;
     private String flag;
     private String title;

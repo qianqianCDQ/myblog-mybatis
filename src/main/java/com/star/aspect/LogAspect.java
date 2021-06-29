@@ -13,10 +13,6 @@ import java.util.Arrays;
 
 /**
  * @Description: 日志切面处理
- * @Author: ONESTAR
- * @Date: Created in 16:18 2020/3/25
- * @QQ: 316392836
- * @URL: http://122.51.28.187:8080/
  */
 @Aspect
 @Component
@@ -45,7 +41,7 @@ public class LogAspect {
         // logger.info("--------doAfter--------");
     }
 
-    @AfterReturning(returning = "result",pointcut = "log()")
+    @AfterReturning(returning = "result", pointcut = "log()")
     public void doAfterRuturn(Object result) {
         logger.info("Result : {}", result);
     }

@@ -22,7 +22,7 @@ public interface CommentDao {
     List<Comment> findByBlogIdAndReplayId(@Param("blogId") Long blogId, @Param("childId") Long childId);
 
     //查询父级对象
-//    Comment findByParentCommentId(Long parentCommentId);
+    // Comment findByParentCommentId(Long parentCommentId);
 
     //添加一个评论
     int saveComment(Comment comment);

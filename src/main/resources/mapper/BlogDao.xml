@@ -166,7 +166,7 @@
     </resultMap>
 
     <!--博客详情查询-->
-    <select id="getDetailedBlog" parameterType="Integer" resultMap="detailedBlog">
+    <select id="getDetailedBlog" resultMap="detailedBlog">
         select b.id bid,b.first_picture,b.flag,b.title,b.content,b.views,b.comment_count,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,t.name
         from t_blog b,t_user u, t_type t
         where b.user_id = u.id and b.type_id = t.id and b.id = #{id}

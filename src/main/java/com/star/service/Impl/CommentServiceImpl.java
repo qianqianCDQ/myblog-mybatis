@@ -14,10 +14,6 @@ import java.util.List;
 
 /**
  * @Description: 博客评论业务层接口实现类
- * @Author: ONESTAR
- * @Date: Created in 13:28 2020/4/5
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Service
 public class CommentServiceImpl implements CommentService {
@@ -38,7 +34,7 @@ public class CommentServiceImpl implements CommentService {
         for(Comment comment : comments){
             Long id = comment.getId();
             String parentNickname1 = comment.getNickname();
-            List<Comment> childComments = commentDao.findByBlogIdParentIdNotNull(blogId,id);
+            List<Comment> childComments = commentDao.findByBlogIdParentIdNotNull(blogId, id);
             // 查询出子评论
             combineChildren(blogId, childComments, parentNickname1);
             comment.setReplyComments(tempReplys);

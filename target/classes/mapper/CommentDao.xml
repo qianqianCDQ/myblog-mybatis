@@ -7,7 +7,6 @@
         values (#{nickname},#{email},#{content},#{avatar},#{createTime},#{blogId},#{parentCommentId},#{adminComment});
     </insert>
 
-
     <select id="findByBlogIdParentIdNull" resultType="com.star.entity.Comment">
         select *
         from t_comment c
@@ -41,6 +40,5 @@
     <delete id="deleteComment" >
         delete from t_comment where id = #{id}
     </delete>
-
 
 </mapper>
