@@ -17,12 +17,12 @@ import java.util.Arrays;
 @Aspect
 @Component
 public class LogAspect {
+
     private final Logger logger = LoggerFactory.getLogger(this.getClass());
 
     // 拦截控制器
     @Pointcut("execution(* com.star.controller.*.*(..))")
     public void log() {}
-
 
     @Before("log()")
     public void doBefore(JoinPoint joinPoint) {

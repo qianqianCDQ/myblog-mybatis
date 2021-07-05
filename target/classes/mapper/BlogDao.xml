@@ -147,6 +147,9 @@
         where b.type_id = t.id and  u.id = b.user_id and (b.title like #{pattern} or b.content like  #{pattern})
         order by b.update_time desc
     </select>
+    select b.id, b.title, b.first_picture, b.views
+    from t_blog b, t_type t
+    where b.type_id = t.id and b.title like #{pattern} or b.content like #{pattern}
 
     <resultMap id="detailedBlog" type="com.star.queryvo.DetailedBlog">
         <id property="id" column="bid"/>

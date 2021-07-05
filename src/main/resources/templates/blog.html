@@ -717,6 +717,7 @@ h5,h6{font-size:1em;}
         }
         return time;
     }
+
     function setTime() {
         /*此处为网站的创建时间*/
         var create_time = Math.round(new Date(Date.UTC(2020, 01, 25, 15, 15, 15)).getTime() / 1000);
@@ -787,7 +788,6 @@ h5,h6{font-size:1em;}
         }
     })
 
-
     //评论表单验证
     $('.ui.form').form({
         fields: {
@@ -819,8 +819,6 @@ h5,h6{font-size:1em;}
     $(function () {
         $("#comment-container").load(/*[[@{/comments/{id}(id=${blog.id})}]]*/"comments/6");
     });
-
-
 
     $('#commentpost-btn').click(function () {
         var boo = $('.ui.form').form('validate form');
