@@ -150,4 +150,7 @@ public class ShowBlog {
                 ", updateTime=" + updateTime +
                 '}';
     }
+
+    public void setViews(Integer integer) {
+    }
 }

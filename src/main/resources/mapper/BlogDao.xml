@@ -25,7 +25,7 @@
 
     <!--新增保存文章-->
     <insert id="saveBlog" parameterType="com.star.entity.Blog">
-            insert into t_blog (id,title, content, first_picture, flag,
+        insert into t_blog (id,title, content, first_picture, flag,
         views, comment_count, appreciation, share_statement, commentabled, published,
         recommend, create_time, update_time, type_id, user_id, description)
         values (#{id},#{title},#{content},#{firstPicture},#{flag},#{views},#{commentCount},#{appreciation},
@@ -147,9 +147,6 @@
         where b.type_id = t.id and  u.id = b.user_id and (b.title like #{pattern} or b.content like  #{pattern})
         order by b.update_time desc
     </select>
-    select b.id, b.title, b.first_picture, b.views
-    from t_blog b, t_type t
-    where b.type_id = t.id and b.title like #{pattern} or b.content like #{pattern}
 
     <resultMap id="detailedBlog" type="com.star.queryvo.DetailedBlog">
         <id property="id" column="bid"/>

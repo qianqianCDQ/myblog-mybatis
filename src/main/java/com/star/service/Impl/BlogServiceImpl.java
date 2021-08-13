@@ -6,6 +6,7 @@ import com.star.entity.Blog;
 import com.star.queryvo.*;
 import com.star.service.BlogService;
 import com.star.util.MarkdownUtils;
+import com.star.util.RedisUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +22,9 @@ public class BlogServiceImpl implements BlogService {
 
     @Autowired
     private BlogDao blogDao;
+
+    @Autowired
+    private RedisUtil redisUtil;
 
     @Override
     public ShowBlog getBlogById(Long id) {
@@ -85,8 +89,13 @@ public class BlogServiceImpl implements BlogService {
         }
         String content = detailedBlog.getContent();
         detailedBlog.setContent(MarkdownUtils.markdownToHtmlExtensions(content));
-        // 文章访问数量自增
-        blogDao.updateViews(id);
+        // 文章访问数量自增，使用Redis
+        System.out.println("blog" + detailedBlog.getId());
+        if (!redisUtil.hasKey("blog" + detailedBlog.getId())) {
+            redisUtil.set("blog" + detailedBlog.getId(), detailedBlog.getViews(), 86400);
+        }
+        redisUtil.incr("blog" + detailedBlog.getId(), 1);
+        // blogDao.updateViews(id);
         // 文章评论数量更新
         blogDao.getCommentCountById(id);
         return detailedBlog;
