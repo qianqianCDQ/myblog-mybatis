@@ -2,7 +2,6 @@ package com.star.queryvo;
 
 import org.hibernate.validator.constraints.Range;
 
-import javax.validation.constraints.NotEmpty;
 import java.util.Date;
 
 /**

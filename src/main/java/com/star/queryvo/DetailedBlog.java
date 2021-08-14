@@ -1,5 +1,7 @@
 package com.star.queryvo;
 
+import org.springframework.data.redis.core.index.PathBasedRedisIndexDefinition;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -12,9 +14,11 @@ public class DetailedBlog {
     private String flag;
     private String title;
     private String content;
-
+    private Long typeId;
+    private Long userId;
     private Integer views;
     private Integer commentCount;
+    private String description;
     private Date updateTime;
     private boolean commentabled;
     private boolean shareStatement;
@@ -140,6 +144,30 @@ public class DetailedBlog {
         this.typeName = typeName;
     }
 
+    public Long getTypeId() {
+        return typeId;
+    }
+
+    public void setTypeId(Long typeId) {
+        this.typeId = typeId;
+    }
+
+    public Long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "DetailedBlog{" +
@@ -148,8 +176,11 @@ public class DetailedBlog {
                 ", flag='" + flag + '\'' +
                 ", title='" + title + '\'' +
                 ", content='" + content + '\'' +
+                ", typeId=" + typeId +
+                ", userId=" + userId +
                 ", views=" + views +
                 ", commentCount=" + commentCount +
+                ", description='" + description + '\'' +
                 ", updateTime=" + updateTime +
                 ", commentabled=" + commentabled +
                 ", shareStatement=" + shareStatement +

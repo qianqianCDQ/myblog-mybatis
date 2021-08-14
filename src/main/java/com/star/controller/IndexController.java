@@ -38,7 +38,6 @@ public class IndexController {
                         @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
                         RedirectAttributes attributes){
         PageHelper.startPage(pageNum, 10);
-
         List<FirstPageBlog> allFirstPageBlog = blogService.getAllFirstPageBlog();
         List<RecommendBlog> recommendedBlog = blogService.getRecommendedBlog();
         PageInfo<FirstPageBlog> pageInfo = new PageInfo<>(allFirstPageBlog);
@@ -47,6 +46,7 @@ public class IndexController {
         return "index";
     }
 
+    /*
     // 搜索博客
     @PostMapping("/search")
     public String search(Model model,
@@ -58,7 +58,7 @@ public class IndexController {
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("query", query);
         return "search";
-    }
+    }*/
 
     // 跳转博客详情页面
     @GetMapping("/blog/{id}")

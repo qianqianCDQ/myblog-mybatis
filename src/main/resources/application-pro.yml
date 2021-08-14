@@ -7,6 +7,12 @@ spring:
   redis:
     port: 6379
     host: localhost
+  data:
+    elasticsearch:
+      cluster-nodes: 127.0.0.1:9300
+  thymeleaf:
+    cache: false
+    mode: LEGACYHTML5
 
 logging:
   level:
@@ -19,6 +25,7 @@ mybatis:
   mapper-locations: classpath:mapper/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
 server:
   port: 80
 

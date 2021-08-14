@@ -11,10 +11,6 @@ import java.util.List;
 
 /**
  * @Description: 照片墙业务层接口实现类
- * @Date: Created in 23:31 2020/4/16
- * @Author: ONESTAR
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Service
 public class PictureServiceImpl implements PictureService {

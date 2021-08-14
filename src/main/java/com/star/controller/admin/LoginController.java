@@ -14,10 +14,6 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @Description: 用户登录控制器
- * @Author: ONESTAR
- * @Date: Created in 9:54 2020/3/27
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Controller
 @RequestMapping("/admin")

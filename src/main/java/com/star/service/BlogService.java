@@ -24,7 +24,7 @@ public interface BlogService {
 
     List<RecommendBlog> getRecommendedBlog();
 
-    List<FirstPageBlog> getSearchBlog(String query);
+    // List<FirstPageBlog> getSearchBlog(String query);
 
     DetailedBlog getDetailedBlog(Long id);
 

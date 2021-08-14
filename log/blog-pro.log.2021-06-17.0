@@ -1,6 +1,0 @@
-2021-06-17 19:17:56.077  INFO 27500 --- [main] com.star.MyblogApplicationTests          : Starting MyblogApplicationTests on LAPTOP-7ARBV4VK with PID 27500 (started by qian in D:\IDEA_Project\myblog-mybatis)
-2021-06-17 19:17:56.080  INFO 27500 --- [main] com.star.MyblogApplicationTests          : The following profiles are active: pro
-2021-06-17 19:18:00.071  INFO 27500 --- [main] com.star.MyblogApplicationTests          : Started MyblogApplicationTests in 4.527 seconds (JVM running for 5.606)
-2021-06-17 20:23:18.406  INFO 26716 --- [main] com.star.MyblogApplicationTests          : Starting MyblogApplicationTests on LAPTOP-7ARBV4VK with PID 26716 (started by qian in D:\IDEA_Project\myblog-mybatis)
-2021-06-17 20:23:18.408  INFO 26716 --- [main] com.star.MyblogApplicationTests          : The following profiles are active: pro
-2021-06-17 20:23:22.025  INFO 26716 --- [main] com.star.MyblogApplicationTests          : Started MyblogApplicationTests in 4.107 seconds (JVM running for 5.025)

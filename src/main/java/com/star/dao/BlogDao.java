@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Mapper
+
 @Repository
 public interface BlogDao {
 
@@ -31,7 +31,7 @@ public interface BlogDao {
 
     // List<FirstPageBlog> getNewBlog();
 
-    List<FirstPageBlog> getSearchBlog(String query);
+    // List<FirstPageBlog> getSearchBlog(String query);
 
     DetailedBlog getDetailedBlog(Long id);
 

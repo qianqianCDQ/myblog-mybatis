@@ -75,10 +75,11 @@ public class BlogServiceImpl implements BlogService {
         return allRecommendBlog;
     }
 
+    /*
     @Override
     public List<FirstPageBlog> getSearchBlog(String query) {
         return blogDao.getSearchBlog(query);
-    }
+    }*/
 
     @Override
     public DetailedBlog getDetailedBlog(Long id) {

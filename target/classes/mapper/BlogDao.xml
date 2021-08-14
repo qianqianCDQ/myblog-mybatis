@@ -138,7 +138,7 @@
     <!--</select>-->
 
     <!--搜索文章-->
-    <select id="getSearchBlog" resultMap="firstPageBlog">
+    <!--<select id="getSearchBlog" resultMap="firstPageBlog">
         <bind name="pattern" value="'%' + query + '%'" />
         select b.id,b.title,b.first_picture, b.views,b.comment_count,b.update_time,b.description,
         t.name ,
@@ -146,7 +146,7 @@
         from t_blog b, t_type t,t_user u
         where b.type_id = t.id and  u.id = b.user_id and (b.title like #{pattern} or b.content like  #{pattern})
         order by b.update_time desc
-    </select>
+    </select>-->
 
     <resultMap id="detailedBlog" type="com.star.queryvo.DetailedBlog">
         <id property="id" column="bid"/>
@@ -155,6 +155,9 @@
         <result property="title" column="title"/>
         <result property="content" column="content"/>
         <result property="typeName" column="name"/>
+        <result property="typeId" column="type_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="description" column="description"/>
         <result property="views" column="views"/>
         <result property="commentCount" column="comment_count"/>
         <result property="updateTime" column="update_time"/>
@@ -167,7 +170,7 @@
 
     <!--博客详情查询-->
     <select id="getDetailedBlog" resultMap="detailedBlog">
-        select b.id bid,b.first_picture,b.flag,b.title,b.content,b.views,b.comment_count,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,t.name
+        select b.id bid,b.first_picture,b.flag,b.title,b.content,b.type_id,b.user_id,b.description,b.views,b.comment_count,b.update_time,b.commentabled,b.share_statement,b.appreciation, u.nickname,u.avatar,t.name
         from t_blog b,t_user u, t_type t
         where b.user_id = u.id and b.type_id = t.id and b.id = #{id}
     </select>

@@ -9,10 +9,6 @@ import org.springframework.stereotype.Service;
 
 /**
  * @Description: 用户业务层接口实现类
- * @Author: ONESTAR
- * @Date: Created in 11:04 2020/3/26
- * @QQ群: 530311074
- * @URL: https://onestar.newstar.net.cn/
  */
 @Service
 public class UserServiceImpl implements UserService {
@@ -25,4 +21,10 @@ public class UserServiceImpl implements UserService {
         User user = userDao.findByUsernameAndPassword(username, MD5Utils.code(password));
         return user;
     }
+
+    @Override
+    public User getUserById(long id) {
+        return userDao.getUserById(id);
+    }
+
 }
