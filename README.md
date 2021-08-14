@@ -14,9 +14,11 @@
 - 项目构建：jdk1.8、Maven 3
 - 持久层框架：Mybatis
 - 模板框架：Thymeleaf
+- 分布式缓存数据库：Redis
+- 分布式搜索引擎：Elastic Search
 - 分页插件：PageHelper
 - 加密：MD5加密
-- 运行环境：腾讯云Centos7
+- 运行环境：阿里云
 
 #### 3.数据库
 - MySQL 5.7
