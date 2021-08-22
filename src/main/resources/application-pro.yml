@@ -14,6 +14,7 @@ spring:
     cache: false
     mode: LEGACYHTML5
 
+
 logging:
   level:
     root: warn

@@ -2,6 +2,8 @@ package com.star.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixProperty;
 import com.star.dao.BlogDao;
 import com.star.entity.Comment;
 import com.star.queryvo.DetailedBlog;
@@ -10,18 +12,19 @@ import com.star.queryvo.RecommendBlog;
 import com.star.service.BlogService;
 import com.star.service.CommentService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.List;
 
 @Controller
 public class IndexController {
+
+    @Value("${server.port}")
+    private String port;
 
     @Autowired
     private BlogDao blogDao;
@@ -33,6 +36,13 @@ public class IndexController {
     private CommentService commentService;
 
     // 分页查询博客列表
+    @HystrixCommand(commandKey = "index",
+                    fallbackMethod = "getFallback",
+                    commandProperties = {
+                        @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+                        @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+                        @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50")
+    })
     @GetMapping("/")
     public String index(Model model,
                         @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
@@ -43,6 +53,7 @@ public class IndexController {
         PageInfo<FirstPageBlog> pageInfo = new PageInfo<>(allFirstPageBlog);
         model.addAttribute("pageInfo", pageInfo);
         model.addAttribute("recommendedBlogs", recommendedBlog);
+        System.out.println("port is " + port);
         return "index";
     }
 
@@ -61,6 +72,13 @@ public class IndexController {
     }*/
 
     // 跳转博客详情页面
+    @HystrixCommand(commandKey = "blog",
+            fallbackMethod = "getFallbackBlog",
+            commandProperties = {
+                    @HystrixProperty(name = "execution.isolation.thread.timeoutInMilliseconds", value = "1000"),
+                    @HystrixProperty(name = "circuitBreaker.requestVolumeThreshold", value = "10"),
+                    @HystrixProperty(name = "circuitBreaker.errorThresholdPercentage", value = "50")
+            })
     @GetMapping("/blog/{id}")
     public String blog(@PathVariable Long id, Model model) {
         DetailedBlog detailedBlog = blogService.getDetailedBlog(id);
@@ -84,4 +102,17 @@ public class IndexController {
         model.addAttribute("blogMessageTotal",blogMessageTotal);
         return "index :: blogMessage";
     }
+
+    @ResponseBody
+    public String getFallback(Model model,
+                              @RequestParam(defaultValue = "1", value = "pageNum") Integer pageNum,
+                              RedirectAttributes attributes) {
+        return "服务超时，请稍后再试...";
+    }
+
+    @ResponseBody
+    public String getFallbackBlog(@PathVariable Long id, Model model) {
+        return "请稍微再点击进入...";
+    }
+
 }
