@@ -16,6 +16,8 @@
 - 模板框架：Thymeleaf
 - 分布式缓存数据库：Redis
 - 分布式搜索引擎：Elastic Search
+- 负载均衡：Nginx
+- 服务熔断、服务降级：Spring Cloud Hystrix
 - 分页插件：PageHelper
 - 加密：MD5加密
 - 运行环境：阿里云
